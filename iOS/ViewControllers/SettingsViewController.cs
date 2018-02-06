@@ -6,7 +6,6 @@ using Foundation;
 using UIKit;
 using System.Collections.Generic;
 using System.Drawing;
-using XTranslate.iOS.Helpers;
 
 namespace XTranslate.iOS
 {
@@ -25,14 +24,14 @@ namespace XTranslate.iOS
 
         public void ConfigureLanguagePicker(UITextField textField)
         {
-            if (String.IsNullOrEmpty(HelpSettings.SelectedLanguage))
+            if (String.IsNullOrEmpty(Help.Settings.SelectedLanguage))
                 textField.Text = "Pick Language";
             else
-                textField.Text = HelpSettings.SelectedLanguage;
+                textField.Text = Help.Settings.SelectedLanguage;
 
             var languagePicker = new UIPickerView
             {
-                Model = new LanguagePickerModel(HelpLanguages.Languages, this),
+                Model = new LanguagePickerModel(Help.Languages.AvailableLanguages, this),
                 ShowSelectionIndicator = true
             };
 
@@ -50,7 +49,7 @@ namespace XTranslate.iOS
         public void UpdateTranslateLanguage(string newLanguage)
         {
             languageTextField.Text = newLanguage;
-            HelpSettings.SelectedLanguage = newLanguage;
+            Help.Settings.SelectedLanguage = newLanguage;
         }
 
     }

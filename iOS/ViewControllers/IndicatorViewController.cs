@@ -83,7 +83,7 @@ namespace XTranslate.iOS
 
         private async Task<string> ReadTextFromImage()
         {
-            var client = ConstructAnalyzeClient();
+            var client = Help.CognitiveAPIs.AnalyzeAPIClient;
             byte[] byteData = GetImageAsByteArray(imagePath);
 
             var operationValue = await RequestAnalysis(client, byteData);
@@ -101,10 +101,10 @@ namespace XTranslate.iOS
 
             string languageCode;
 
-            if (!Help.Languages.LanguageCodes.TryGetValue(languageKey, out languageCode))
+            if (!Help.Languages.AvailableLanguageCodes.TryGetValue(languageKey, out languageCode))
                 languageCode = Help.Languages.DefaultLanguageCode;
 
-            var urlString = Help.PrivateKeys.TranslatorApi + "?text=" + System.Uri.EscapeUriString(toBeTranslated) + "&to=" + languageCode;
+            var urlString = Help.CognitiveAPIs.TranslatorApi + "?text=" + System.Uri.EscapeUriString(toBeTranslated) + "&to=" + languageCode;
             var uri = new Uri(urlString);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
@@ -127,7 +127,7 @@ namespace XTranslate.iOS
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
 
-                var uri = new Uri(Help.PrivateKeys.CognitiveServicesUrl(ComputerVisionServiceType.AnalyzeHandwriting));
+                var uri = new Uri(Help.CognitiveAPIs.CognitiveServicesUrl(ComputerVisionService.AnalyzeHandwriting));
 
                 response = await client.PostAsync(uri, content);
 
@@ -202,32 +202,12 @@ namespace XTranslate.iOS
 
         private async Task<string> TranslateText(string toBeTranslated)
         {
-            var client = ConstructTranslatorClient();
+            var client = Help.CognitiveAPIs.TranslateAPIClient;
 
             return await RequestTranslation(client, toBeTranslated);
         }
 
-        private HttpClient ConstructAnalyzeClient()
-        {
-            HttpClient client = new HttpClient();
-
-            // Request headers.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Help.PrivateKeys.AnalyzeKey);
-
-            return client;
-        }
-
-        private HttpClient ConstructTranslatorClient()
-        {
-            HttpClient client = new HttpClient();
-
-            // Request headers.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Help.PrivateKeys.TranslateKey);
-
-            return client;
-        }
-
-        #region Methods: Event Handlers
+        #region Methods: Event Handlers 
         private void ConfigureEventHandlers()
         {
             if (translateButton != null)

@@ -9,7 +9,7 @@ namespace XTranslate
         {
             public static readonly string DefaultLanguageCode = "es";
 
-            public static List<string> Languages = new List<string>
+            public static List<string> AvailableLanguages = new List<string>
             {
                 "Afrikaans",
                 "Arabic",
@@ -66,7 +66,7 @@ namespace XTranslate
                 "Yucatec Maya"
             };
 
-            public static Dictionary<string, string> LanguageCodes = new Dictionary<string, string>
+            public static Dictionary<string, string> AvailableLanguageCodes = new Dictionary<string, string>
             {
                 { "Afrikaans", "af" },
                 { "Arabic", "ar" },
