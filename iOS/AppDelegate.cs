@@ -1,6 +1,13 @@
 ﻿using Foundation;
 using UIKit;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
 namespace XTranslate.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
@@ -20,6 +27,8 @@ namespace XTranslate.iOS
         {
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
+
+            AppCenter.Start("7d511e7c-7fec-435f-a2b9-5ce750cac108", typeof(Analytics), typeof(Crashes));
 
             return true;
         }

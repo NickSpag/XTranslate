@@ -4,15 +4,18 @@ using Plugin.Settings.Abstractions;
 
 namespace XTranslate.iOS.Helpers
 {
-    public static class HelpSettings
+    public static partial class Help
     {
-        private static ISettings AppSettings => CrossSettings.Current;
-
-        public static string SelectedLanguage
+        public static class HelpSettings
         {
-            get => AppSettings.GetValueOrDefault(nameof(SelectedLanguage), string.Empty);
-            set => AppSettings.AddOrUpdateValue(nameof(SelectedLanguage), value);
-        }
+            private static ISettings AppSettings => CrossSettings.Current;
 
+            public static string SelectedLanguage
+            {
+                get => AppSettings.GetValueOrDefault(nameof(SelectedLanguage), string.Empty);
+                set => AppSettings.AddOrUpdateValue(nameof(SelectedLanguage), value);
+            }
+
+        }
     }
 }

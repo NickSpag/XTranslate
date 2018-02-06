@@ -163,7 +163,15 @@ namespace XTranslate.iOS
                 {
 
                     case "Succeeded":
-                        return responseObject.RecognitionResult.Lines[0].Text;
+                        string wording = "";
+
+                        foreach (var wordLine in responseObject.RecognitionResult.Lines)
+                        {
+                            wording = wording + wordLine.Text + " ";
+                        }
+
+                        return wording;
+                    //return responseObject.RecognitionResult.Lines[0].Text;
                     case "Not started":
                         System.Console.WriteLine("Not started. Trying again...");
                         break;
