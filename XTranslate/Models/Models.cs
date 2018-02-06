@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
-namespace XTranslate.iOS
+namespace XTranslate
 {
     public class AzureAnalyzeImageResponse
     {

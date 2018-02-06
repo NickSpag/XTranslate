@@ -15,7 +15,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
-using XTranslate.iOS.Helpers;
 
 namespace XTranslate.iOS
 {
@@ -98,14 +97,14 @@ namespace XTranslate.iOS
         {
             HttpResponseMessage response;
 
-            var languageKey = HelpSettings.SelectedLanguage;
+            var languageKey = Help.Settings.SelectedLanguage;
 
             string languageCode;
 
-            if (!HelpLanguages.LanguageCodes.TryGetValue(languageKey, out languageCode))
-                languageCode = HelpLanguages.DefaultLanguageCode;
+            if (!Help.Languages.LanguageCodes.TryGetValue(languageKey, out languageCode))
+                languageCode = Help.Languages.DefaultLanguageCode;
 
-            var urlString = PrivateKeys.TranslatorApi + "?text=" + System.Uri.EscapeUriString(toBeTranslated) + "&to=" + languageCode;
+            var urlString = Help.PrivateKeys.TranslatorApi + "?text=" + System.Uri.EscapeUriString(toBeTranslated) + "&to=" + languageCode;
             var uri = new Uri(urlString);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
@@ -128,7 +127,7 @@ namespace XTranslate.iOS
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
 
-                var uri = new Uri(PrivateKeys.CognitiveServicesUrl(ComputerVisionServiceType.AnalyzeHandwriting));
+                var uri = new Uri(Help.PrivateKeys.CognitiveServicesUrl(ComputerVisionServiceType.AnalyzeHandwriting));
 
                 response = await client.PostAsync(uri, content);
 
@@ -213,7 +212,7 @@ namespace XTranslate.iOS
             HttpClient client = new HttpClient();
 
             // Request headers.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", PrivateKeys.AnalyzeKey);
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Help.PrivateKeys.AnalyzeKey);
 
             return client;
         }
@@ -223,7 +222,7 @@ namespace XTranslate.iOS
             HttpClient client = new HttpClient();
 
             // Request headers.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", PrivateKeys.TranslateKey);
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Help.PrivateKeys.TranslateKey);
 
             return client;
         }

@@ -150,7 +150,6 @@
     <Folder Include="Helpers\" />
     <Folder Include="Assets.xcassets\translateIcon.imageset\" />
     <Folder Include="Views\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -180,14 +179,10 @@
     <Compile Include="ViewControllers\SettingsViewController.designer.cs">
       <DependentUpon>SettingsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\HelpLanguages.cs" />
-    <Compile Include="Helpers\HelpSettings.cs" />
-    <Compile Include="Models\Models.cs" />
     <Compile Include="Views\IndicatorView.cs" />
     <Compile Include="Views\IndicatorView.designer.cs">
       <DependentUpon>IndicatorView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\PrivateKeys.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\lookIcon.png" />

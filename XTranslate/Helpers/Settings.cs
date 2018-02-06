@@ -2,11 +2,11 @@
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
-namespace XTranslate.iOS.Helpers
+namespace XTranslate
 {
     public static partial class Help
     {
-        public static class HelpSettings
+        public static class Settings
         {
             private static ISettings AppSettings => CrossSettings.Current;
 
