@@ -40,5 +40,7 @@ Thumbs.db
 *.dotCover
 
 #Private Azure Keys
+XTranslate/Helpers/PrivateKeys.cs
 
+#Other
 XTranslate/project.lock.json

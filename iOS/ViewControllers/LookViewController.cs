@@ -22,9 +22,6 @@ namespace XTranslate.iOS
 {
     public partial class LookViewController : UIViewController, IAVCaptureVideoDataOutputSampleBufferDelegate
     {
-        [Field("")]
-        private NSString CameraMatrix;
-
         #region Constructor
         public LookViewController(IntPtr handle) : base(handle)
         {
