@@ -26,6 +26,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
+    <MtouchSdkVersion>11.2</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -183,6 +184,11 @@
     <Compile Include="Views\IndicatorView.designer.cs">
       <DependentUpon>IndicatorView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\LiveTrackingViewController.cs" />
+    <Compile Include="ViewControllers\LiveTrackingViewController.designer.cs">
+      <DependentUpon>LiveTrackingViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCapture.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\lookIcon.png" />
