@@ -24,6 +24,8 @@ namespace XTranslate.iOS
         private AVCaptureVideoDataOutput deviceOutput;
         private AVCaptureDevice captureDevice;
 
+        private DispatchQueue queue = new DispatchQueue("videoQueue");
+
         private CVPixelBufferAttributes pixelBufferAttributes = new CVPixelBufferAttributes()
         {
             PixelFormatType = CVPixelFormatType.CV32BGRA
@@ -78,7 +80,7 @@ namespace XTranslate.iOS
             //videoSettings[CVPixelBuffer.PixelFormatTypeKey] = new NSNumber((int)CVPixelFormatType.CV32BGRA);
 
             //deviceOutput.WeakVideoSettings = videoSettings;
-            deviceOutput.SetSampleBufferDelegateQueue(this, DispatchQueue.GetGlobalQueue(DispatchQueuePriority.Default));
+            deviceOutput.SetSampleBufferDelegateQueue(this, queue);
 
             try
             {
