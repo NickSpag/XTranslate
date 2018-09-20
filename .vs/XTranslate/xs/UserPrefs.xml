@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{E4831A29-AD18-4398-9AED-7021B9322FE8}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="XTranslate/Helpers/CognitiveAPIs.cs">
+    <Files>
+      <File FileName="XTranslate/Interfaces/ICaptureFrames.cs" Line="1" Column="1" />
+      <File FileName="iOS/ViewControllers/LookViewController.cs" Line="50" Column="1" />
+      <File FileName="iOS/ViewControllers/LiveTrackingViewController.cs" Line="141" Column="13" />
+      <File FileName="XTranslate/Helpers/CognitiveAPIs.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.XTranslate.Droid PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MultiItemStartupConfigurations />
+</Properties>

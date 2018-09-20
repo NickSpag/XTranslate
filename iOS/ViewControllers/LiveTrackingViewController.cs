@@ -92,7 +92,6 @@ namespace XTranslate.iOS
                 System.Console.WriteLine(ex.Message);
             }
 
-
             ConfigureImageLayer(captureSession);
 
             captureSession.StartRunning();
@@ -182,13 +181,14 @@ namespace XTranslate.iOS
         public void DidOutputSampleBuffer(AVCaptureOutput captureOutput, CMSampleBuffer sampleBuffer, AVCaptureConnection connection)
         {
             var imageBuffer = sampleBuffer.GetImageBuffer();
+            var camerMatrixAttachment = sampleBuffer.GetSampleAttachments(true)[0];
+
+            sampleBuffer.Dispose();
+
             var pixelBuffer = imageBuffer as CVPixelBuffer;
 
             var requestOptions = new VNImageOptions();
-
-            var camerMatrixAttachment = sampleBuffer.GetSampleAttachments(true)[0];
             var matrix = camerMatrixAttachment.CameraIntrinsicMatrix;
-
             requestOptions.CameraIntrinsics = matrix;
 
             var imageRequestHandler = new VNImageRequestHandler(pixelBuffer, CGImagePropertyOrientation.Right, requestOptions);
@@ -203,6 +203,7 @@ namespace XTranslate.iOS
         public void DidDropSampleBuffer(AVCaptureOutput captureOutput, CMSampleBuffer sampleBuffer, AVCaptureConnection connection)
         {
             System.Console.WriteLine("dropped frame");
+            sampleBuffer.Dispose();
         }
         #endregion
     }
